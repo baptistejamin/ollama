@@ -45,6 +45,9 @@ type GenerateRequest struct {
 	// Prompt is the textual prompt to send to the model.
 	Prompt string `json:"prompt"`
 
+	// Prompt is the textual grammar to send to the model.
+	Grammar string `json:"grammar"`
+
 	// System overrides the model's default system message/prompt.
 	System string `json:"system"`
 

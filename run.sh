@@ -1,0 +1,4 @@
+export OLLAMA_NUM_PARALLEL=4
+export OLLAMA_HOST=0.0.0.0:9999
+export OLLAMA_KEEP_ALIVE=99999999
+./ollama serve
