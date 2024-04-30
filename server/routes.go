@@ -273,6 +273,7 @@ func (s *Server) GenerateHandler(c *gin.Context) {
 		// Start prediction
 		req := llm.CompletionRequest{
 			Prompt:  prompt,
+			Grammar: req.Grammar,
 			Format:  req.Format,
 			Images:  images,
 			Options: opts,
