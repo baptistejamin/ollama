@@ -146,6 +146,11 @@ func (s *Server) GenerateHandler(c *gin.Context) {
 	select {
 	case runner = <-rCh:
 	case err = <-eCh:
+		if errors.Is(err, context.Canceled) {
+			c.JSON(499, gin.H{"error": "request canceled"})
+			return
+		}
+
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -390,6 +395,11 @@ func (s *Server) EmbeddingsHandler(c *gin.Context) {
 	select {
 	case runner = <-rCh:
 	case err = <-eCh:
+		if errors.Is(err, context.Canceled) {
+			c.JSON(499, gin.H{"error": "request canceled"})
+			return
+		}
+
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -1217,6 +1227,11 @@ func (s *Server) ChatHandler(c *gin.Context) {
 	select {
 	case runner = <-rCh:
 	case err = <-eCh:
+		if errors.Is(err, context.Canceled) {
+			c.JSON(499, gin.H{"error": "request canceled"})
+			return
+		}
+
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
